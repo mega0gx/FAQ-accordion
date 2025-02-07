@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header"></div>
+    <div class="card">
+      <div class="title">
+        <img src="./icon-star.svg" alt="icon" />
+        <span>FAQs</span>
+      </div>
+      <div class="qas" id="qas">
+        <!-- script run here -->
+      </div>
+    </div>
+    <script>
+      fetch("./data.json")
+        .then((response) => response.json())
+        .then((data) => {
+            const qas=document.getElementById("qas");
+            let activeIndicator=null;
+            let activeAnswer = null;
+            data.forEach((item,index) =>{
+                const qa=document.createElement("div");
+                qa.classList.add("qa");
+                const questionContainer=document.createElement("div");
+                questionContainer.classList.add("question-container");
+                const question=document.createElement("div");
+                question.classList.add("question");
+                question.textContent=item.question;
+                const indicator=document.createElement("div");
+                indicator.classList.add("indicator");
+                indicator.innerHTML=`<span>+</span>`;
+                const answer=document.createElement("div");
+                answer.classList.add("answer");
+                answer.textContent=item.answer;
+                if (index === 0) {
+                    indicator.classList.add("active");
+                    indicator.innerHTML = `<span>-</span>`; 
+                    answer.classList.add("show-answer");
+                    activeIndicator = indicator;
+                    activeAnswer = answer;
+                }
+                indicator.addEventListener('click',()=>{
+                    if(activeIndicator){
+                        activeIndicator.classList.remove('active');
+                        activeIndicator.innerHTML = `<span>+</span>`;
+                    }
+                    if(activeAnswer){
+                        activeAnswer.classList.remove('show-answer');
+                    }
+                    indicator.classList.add('active');
+                    indicator.innerHTML = `<span>-</span>`;
+                    activeIndicator=indicator;
+                    answer.classList.add('show-answer');
+                    activeAnswer=answer;
+                })
+                questionContainer.appendChild(question);
+                questionContainer.appendChild(indicator);
+                qa.appendChild(questionContainer);
+                qa.appendChild(answer);
+                qas.appendChild(qa);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    </script>
+  </body>
+</html>
+
+<!-- <div class="qas">
+    <div class="qa">
+        <div class="question-container">
+          <div class="question">Is Frontend Mentor free?</div>
+          <div class="btn">
+              <p>+</p>
+          </div>
+        </div>
+        <div class="answer">
+          Yes, Frontend Mentor offers both free and premium coding challenges,
+          with the free option providing access to a range of projects
+          suitable for all skill levels.
+        </div>
+    </div>
+  </div> -->
+

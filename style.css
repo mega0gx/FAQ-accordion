@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=DotGothic16&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Rubik+Glitch&family=Sriracha&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Work Sans", serif;
+    background-color: hsl(275, 100%, 97%);
+    display: flex;
+    justify-content: center;
+}
+
+.header{
+    width: 100%;
+    height: 40vh;
+    background:url(./background-pattern-desktop.svg);
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+}
+
+
+.card{
+    min-width: 600px;
+    width: 25%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-top: 20vh;
+    padding: 2rem;
+}
+.card .title{
+    margin-bottom: 1.5rem;
+}
+.card .title span{
+    color: hsl(292, 42%, 14%);
+    font-weight: 700;
+    font-size: 3rem;
+}
+.card .title img{
+    margin-right: 1.5rem;
+}
+.qas{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.qa{
+    /* background-color: beige; */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* border-bottom: 1px solid rgb(114, 114, 114); */
+}
+.question-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.question{
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.question:hover{
+    cursor: pointer;
+    color:rgb(201, 0, 174);
+}
+.indicator{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(201, 0, 174);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.indicator span{
+    color: white;
+}
+.active{
+    background-color: hsl(292, 42%, 14%);
+}
+/* .card .btn p{
+    color:rgb(255, 255, 255);
+    font-weight: 900;
+} */
+.answer{
+    color: hsl(292, 16%, 49%);
+    font-weight: 400;
+    font-size: 1rem;
+    display: none;
+}
+.show-answer{
+    display: block;
+}
